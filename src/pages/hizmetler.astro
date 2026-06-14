@@ -48,6 +48,23 @@ const groups = [
   </section>
   <section class="section">
     <div class="container">
+      <div class="featured-service">
+        <div class="featured-image">
+          <img
+            src="/images/hotel/geyikli-paris-otel-elektrikli-arac-sarj-istasyonu-1.jpg"
+            alt="Geyikli Paris Otel elektrikli araç şarj istasyonu"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="featured-text">
+          <span class="featured-eyebrow">Öne Çıkan Olanak</span>
+          <h2 class="featured-title">Elektrikli Araç Şarj İstasyonu</h2>
+          <p class="featured-desc">
+            Elektrikli araçla gelen misafirlerimiz için otel alanında şarj imkânı sunulur.
+          </p>
+        </div>
+      </div>
       {groups.map((group) => (
         <div class="group">
           <h2 class="group-name">{group.name}</h2>
@@ -106,9 +123,59 @@ const groups = [
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
+  .featured-service {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 5rem;
+    padding: 2.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .featured-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .featured-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
+  }
+  .featured-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .featured-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .featured-desc {
+    color: var(--color-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+  }
   @media (max-width: 768px) {
     .page-title { font-size: 2.2rem; }
     .group-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-service {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+    .featured-image { order: -1; }
   }
   @media (max-width: 480px) {
     .group-grid { grid-template-columns: 1fr; }
