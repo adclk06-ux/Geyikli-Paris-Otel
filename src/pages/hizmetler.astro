@@ -1,41 +1,115 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import FinalCTA from '../components/FinalCTA.astro';
 
-const services = [
-  { title: 'Ücretsiz Wi-Fi', description: 'Tüm alanlarda hızlı internet erişimi.' },
-  { title: 'Klima', description: 'Her odada ferahlatıcı klima sistemi.' },
-  { title: 'Otopark', description: 'Konuklarımız için araç park olanağı.' },
-  { title: 'Kahvaltı', description: 'Güne lezzetli bir kahvaltıyla başlayın.' },
-  { title: 'Günlük Temizlik', description: 'Odalar düzenli olarak temizlenir.' },
-  { title: '24 Saat Resepsiyon', description: 'Her an yardım alabileceğiniz resepsiyon.' },
+const groups = [
+  {
+    name: 'Konfor',
+    items: [
+      { title: 'Ücretsiz Wi-Fi', description: 'Tüm alanlarda hızlı internet erişimi.' },
+      { title: 'Klima', description: 'Her odada ferahlatıcı klima sistemi.' },
+      { title: 'Kahvaltı', description: 'Güne lezzetli bir kahvaltıyla başlayın.' },
+      { title: 'Aile Odaları', description: 'Ailelere özel geniş konaklama seçenekleri.' },
+    ],
+  },
+  {
+    name: 'İletişim',
+    items: [
+      { title: '7/24 Resepsiyon', description: 'Her an yardım alabileceğiniz resepsiyon.' },
+      { title: 'Hızlı İletişim', description: 'Telefon ve WhatsApp ile anında yanıt.' },
+    ],
+  },
+  {
+    name: 'Temizlik',
+    items: [
+      { title: 'Günlük Temizlik', description: 'Odalar düzenli olarak temizlenir.' },
+      { title: 'Güvenli Konaklama', description: 'Güven veren, sakin bir ortam.' },
+    ],
+  },
+  {
+    name: 'Ulaşım & Konum',
+    items: [
+      { title: 'Otopark', description: 'Konuklarımız için araç park olanağı.' },
+      { title: 'Merkezi Konum', description: 'Geyikli merkezinde pratik konum.' },
+    ],
+  },
 ];
 ---
 
 <Layout title="Hizmetler">
-  <section class="section">
+  <section class="page-hero">
     <div class="container">
-      <h1 class="section-title">Hizmetlerimiz</h1>
-      <p class="section-subtitle">Konforunuz için sunduğumuz olanaklar.</p>
-      <div class="services-grid">
-        {services.map((service) => (
-          <ServiceCard {...service} />
-        ))}
-      </div>
+      <span class="page-eyebrow">Hizmetlerimiz</span>
+      <h1 class="page-title">Konforlu Bir Konaklama İçin Sunduklarımız</h1>
+      <p class="page-subtitle">Geyikli Paris'te misafirlerimizin ihtiyaçlarını ön planda tutuyoruz.</p>
     </div>
   </section>
+  <section class="section">
+    <div class="container">
+      {groups.map((group) => (
+        <div class="group">
+          <h2 class="group-name">{group.name}</h2>
+          <div class="group-grid">
+            {group.items.map((item) => <ServiceCard {...item} />)}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+  <FinalCTA />
 </Layout>
 
 <style>
-  .services-grid {
+  .page-hero {
+    padding: 10rem 0 5rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .group { margin-bottom: 3.5rem; }
+  .group-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .group-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
   @media (max-width: 768px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .page-title { font-size: 2.2rem; }
+    .group-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 480px) {
-    .services-grid { grid-template-columns: 1fr; }
+    .group-grid { grid-template-columns: 1fr; }
   }
 </style>

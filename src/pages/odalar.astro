@@ -1,37 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RoomCard from '../components/RoomCard.astro';
-import CTASection from '../components/CTASection.astro';
+import FinalCTA from '../components/FinalCTA.astro';
 
 const rooms = [
-  { title: 'Çift Kişilik Oda', description: 'Rahat ve huzurlu bir konaklama için ideal.', features: ['Çift Kişilik Yatak', 'Klima', 'Wi-Fi'] },
-  { title: 'Aile Odası', description: 'Geniş ve konforlu aile odası seçeneği.', features: ['Geniş Alan', 'Klima', 'Wi-Fi'] },
-  { title: 'Tek Kişilik Oda', description: 'Pratik ve temiz tek kişilik konaklama.', features: ['Tek Kişilik Yatak', 'Klima', 'Wi-Fi'] },
+  { title: 'Standart Oda', description: 'Rahat ve huzurlu bir konaklama için ideal seçim. Temiz, ferah ve özenle hazırlanmış.', capacity: '2 Kişi', bed: 'Çift Kişilik', features: ['Klima', 'Wi-Fi', 'TV'] },
+  { title: 'Deluxe Oda', description: 'Biraz daha fazla alan ve konfor arayanlar için geniş ve şık dekore edilmiş oda.', capacity: '2 Kişi', bed: 'King Size', features: ['Klima', 'Wi-Fi', 'TV', 'Minibar'] },
+  { title: 'Aile Odası', description: 'Aileler ve kalabalık gruplar için geniş, konforlu ve pratik konaklama seçeneği.', capacity: '4 Kişi', bed: 'Çift + Tek', features: ['Klima', 'Wi-Fi', 'TV', 'Balkon'] },
 ];
 ---
 
 <Layout title="Odalar">
-  <section class="section">
+  <section class="page-hero">
     <div class="container">
-      <h1 class="section-title">Odalarımız</h1>
-      <p class="section-subtitle">Geyikli Paris'te temiz ve konforlu odalar sizi bekliyor.</p>
+      <span class="page-eyebrow">Odalarımız</span>
+      <h1 class="page-title">Her Misafire Uygun Konforlu Odalar</h1>
+      <p class="page-subtitle">Geyikli Paris'te temiz, huzurlu ve özenle hazırlanmış odalar sizi bekliyor.</p>
+    </div>
+  </section>
+  <section class="section rooms-page">
+    <div class="container">
       <div class="rooms-grid">
-        {rooms.map((room) => (
-          <RoomCard {...room} />
-        ))}
+        {rooms.map((room) => <RoomCard {...room} />)}
       </div>
     </div>
   </section>
-  <CTASection />
+  <FinalCTA />
 </Layout>
 
 <style>
+  .page-hero {
+    padding: 10rem 0 5rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .rooms-page { padding-top: 5rem; }
   .rooms-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
   @media (max-width: 768px) {
+    .page-title { font-size: 2.2rem; }
     .rooms-grid { grid-template-columns: 1fr; }
   }
 </style>

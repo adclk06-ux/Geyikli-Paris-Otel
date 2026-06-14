@@ -1,0 +1,54 @@
+---
+import ServiceCard from './ServiceCard.astro';
+
+const services = [
+  { title: 'Ücretsiz Wi-Fi', description: 'Tüm alanlarda hızlı internet erişimi.' },
+  { title: '7/24 Resepsiyon', description: 'Her an yardım alabileceğiniz resepsiyon.' },
+  { title: 'Kahvaltı', description: 'Güne lezzetli bir kahvaltıyla başlayın.' },
+  { title: 'Otopark', description: 'Konuklarımız için araç park olanağı.' },
+  { title: 'Klima', description: 'Her odada ferahlatıcı klima sistemi.' },
+  { title: 'Günlük Temizlik', description: 'Odalar düzenli olarak temizlenir.' },
+  { title: 'Aile Odaları', description: 'Ailelere özel geniş konaklama seçenekleri.' },
+  { title: 'Merkezi Konum', description: 'Geyikli merkezinde pratik konum.' },
+  { title: 'Hızlı İletişim', description: 'Telefon ve WhatsApp ile anında yanıt.' },
+  { title: 'Güvenli Konaklama', description: 'Güven veren, sakin bir ortam.' },
+];
+---
+
+<section class="section services">
+  <div class="container">
+    <div class="services-header">
+      <span class="eyebrow">Olanaklarımız</span>
+      <h2 class="section-title">Konforlu Bir Konaklama İçin İhtiyacınız Olan Her Şey</h2>
+      <p class="section-subtitle">Geyikli Paris'te misafirlerimizin konforu önceliğimizdir.</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => <ServiceCard {...s} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services { background: var(--color-surface); }
+  .services-header { text-align: center; margin-bottom: 3rem; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

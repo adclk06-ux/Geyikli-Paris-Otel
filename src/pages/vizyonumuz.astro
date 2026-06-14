@@ -1,29 +1,118 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+const values = [
+  { title: 'Temizlik', desc: 'Her oda, her misafir öncesi özenle temizlenir ve hazırlanır.' },
+  { title: 'Güven', desc: 'Misafirlerimizin kendini güvende hissettiği bir ortam sunarız.' },
+  { title: 'Konfor', desc: 'Rahat yataklar, ferah alanlar ve huzurlu bir atmosfer.' },
+  { title: 'Misafir Memnuniyeti', desc: 'Her misafirin ihtiyacını dinleyip en iyi deneyimi sunarız.' },
+  { title: 'Hizmet Kalitesi', desc: 'Sıcak karşılama, hızlı yanıt ve samimi iletişim.' },
+];
 ---
 
 <Layout title="Vizyonumuz">
-  <section class="section">
-    <div class="container vision-content">
-      <h1 class="section-title">Vizyonumuz</h1>
-      <p>
-        Geyikli Paris olarak vizyonumuz; temiz, huzurlu ve misafir odaklı bir konaklama sunmaktır. Her misafirimizin kendini evinde gibi hissetmesi için çalışıyoruz.
-      </p>
-      <p>
-        Geyikli ve Çanakkale bölgesine gelen ziyaretçilere güven veren, sade ve zarif bir konaklama deneyimi sağlamayı hedefliyoruz.
-      </p>
-      <p>
-        Telefon veya WhatsApp ile ulaşan her misafire hızlı ve samimi bir şekilde yanıt vererek rezervasyon sürecini kolaylaştırıyoruz.
-      </p>
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Vizyonumuz</span>
+      <h1 class="page-title">Değerlerimiz ve Hedefimiz</h1>
+      <p class="page-subtitle">Geyikli Paris olarak misafir odaklı bir konaklama anlayışını benimsiyoruz.</p>
     </div>
   </section>
+  <section class="section">
+    <div class="container">
+      <div class="vision-intro">
+        <p>
+          Geyikli Paris olarak vizyonumuz; temiz, huzurlu ve misafir odaklı bir konaklama sunmaktır. Her misafirimizin kendini evinde gibi hissetmesi için çalışıyoruz.
+        </p>
+        <p>
+          Geyikli ve Çanakkale bölgesine gelen ziyaretçilere güven veren, sade ve zarif bir konaklama deneyimi sağlamayı hedefliyoruz.
+        </p>
+      </div>
+      <div class="values-grid">
+        {values.map((v) => (
+          <div class="value-card card">
+            <h3 class="value-title">{v.title}</h3>
+            <p class="value-desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <FinalCTA />
 </Layout>
 
 <style>
-  .vision-content { max-width: 720px; }
-  .vision-content p {
-    color: var(--color-text-muted);
-    margin-bottom: 1rem;
-    line-height: 1.8;
+  .page-hero {
+    padding: 10rem 0 5rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .vision-intro {
+    max-width: 680px;
+    margin: 0 auto 4rem;
+    text-align: center;
+  }
+  .vision-intro p {
+    color: var(--color-muted);
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .value-card {
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .value-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 164, 92, 0.2);
+  }
+  .value-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    margin-bottom: 0.6rem;
+  }
+  .value-desc {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  @media (max-width: 768px) {
+    .page-title { font-size: 2.2rem; }
+    .values-grid { grid-template-columns: 1fr; }
   }
 </style>

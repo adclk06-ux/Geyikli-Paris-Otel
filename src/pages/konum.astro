@@ -1,43 +1,142 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import FinalCTA from '../components/FinalCTA.astro';
 import { hotelConfig } from '../config/hotel';
 ---
 
 <Layout title="Konum">
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow">Konum</span>
+      <h1 class="page-title">Geyikli ve Çanakkale'ye Yakın Konum</h1>
+      <p class="page-subtitle">Bölgeyi keşfetmek ve huzurlu bir konaklama deneyimi yaşamak için ideal bir nokta.</p>
+    </div>
+  </section>
   <section class="section">
-    <div class="container location-content">
-      <h1 class="section-title">Konum</h1>
-      <p>
-        Geyikli Paris, <strong>{hotelConfig.location}</strong> merkezinde yer almaktadır. Çanakkale'nin güzel ilçesi Geyikli'de konaklama yapmak isteyenler için ideal bir konuma sahibiz.
-      </p>
-      <p>
-        Bozcaada feribotuna yakın konumumuz sayesinde adaya geçiş yapmak isteyen misafirlerimiz için pratik bir konaklama noktasıyız.
-      </p>
-      <p>
-        Adres: {hotelConfig.address}
-      </p>
-      <div class="map-placeholder">
-        <span>Harita Alanı</span>
+    <div class="container location-grid">
+      <div class="location-text">
+        <p>
+          Geyikli Paris, <strong>{hotelConfig.location}</strong> merkezinde yer almaktadır. Çanakkale'nin güzel ilçesi Geyikli'de konaklama yapmak isteyenler için ideal bir konuma sahibiz.
+        </p>
+        <p>
+          Bozcaada feribotuna yakın konumumuz sayesinde adaya geçiş yapmak isteyen misafirlerimiz için pratik bir konaklama noktasıyız.
+        </p>
+        <div class="location-info">
+          <span class="info-label">Adres</span>
+          <span class="info-value">{hotelConfig.address}</span>
+        </div>
+        <div class="location-actions">
+          <a href={hotelConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Yol Tarifi Al</a>
+          <a href={`tel:${hotelConfig.phone}`} class="btn btn-outline">Konum İçin Arayın</a>
+        </div>
+      </div>
+      <div class="location-map">
+        <div class="map-frame">
+          <div class="map-placeholder">
+            <span>Harita Alanı</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <FinalCTA />
 </Layout>
 
 <style>
-  .location-content { max-width: 720px; }
-  .location-content p {
-    color: var(--color-text-muted);
-    margin-bottom: 1rem;
-    line-height: 1.8;
+  .page-hero {
+    padding: 10rem 0 5rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-surface) 100%);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+  .page-subtitle {
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .location-text p {
+    color: var(--color-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 2rem 0;
+    padding: 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+  .info-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+  }
+  .info-value {
+    font-size: 0.95rem;
+    color: var(--color-ivory);
+  }
+  .location-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .location-map { position: relative; }
+  .map-frame {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .map-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(201, 164, 92, 0.2);
+    border-radius: calc(var(--radius-lg) + 12px);
+    z-index: -1;
   }
   .map-placeholder {
-    aspect-ratio: 16 / 9;
-    background: var(--color-border);
-    border-radius: var(--radius);
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(160deg, #1e2823 0%, #141a17 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-muted);
-    margin-top: 1.5rem;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 768px) {
+    .page-title { font-size: 2.2rem; }
+    .location-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .location-map { order: -1; }
   }
 </style>

@@ -1,0 +1,92 @@
+---
+import { hotelConfig } from '../config/hotel';
+---
+
+<section class="section location-section">
+  <div class="container location-grid">
+    <div class="location-text">
+      <span class="eyebrow">Konum</span>
+      <h2 class="section-title">Geyikli ve Çanakkale'ye Yakın Konum</h2>
+      <p class="location-body">
+        Geyikli Paris, bölgeyi keşfetmek ve sakin bir konaklama deneyimi yaşamak isteyen misafirler için pratik bir konum sunar.
+      </p>
+      <div class="location-actions">
+        <a href={hotelConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">Yol Tarifi Al</a>
+        <a href={`tel:${hotelConfig.phone}`} class="btn btn-outline">Konum İçin Arayın</a>
+      </div>
+    </div>
+    <div class="location-map">
+      <div class="map-frame">
+        <div class="map-placeholder">
+          <span>Harita Alanı</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location-section { background: var(--color-surface); }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .location-text { max-width: 500px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  .location-body {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.85;
+    margin: 1.5rem 0 2rem;
+  }
+  .location-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .location-map {
+    position: relative;
+  }
+  .map-frame {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .map-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(201, 164, 92, 0.2);
+    border-radius: calc(var(--radius-lg) + 12px);
+    z-index: -1;
+  }
+  .map-placeholder {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(160deg, #1e2823 0%, #141a17 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 768px) {
+    .location-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .location-map { order: -1; }
+  }
+</style>

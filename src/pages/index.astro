@@ -1,68 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import RoomCard from '../components/RoomCard.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import CTASection from '../components/CTASection.astro';
-import { hotelConfig } from '../config/hotel';
-
-const rooms = [
-  { title: 'Çift Kişilik Oda', description: 'Rahat ve huzurlu bir konaklama için ideal.', features: ['Çift Kişilik Yatak', 'Klima', 'Wi-Fi'] },
-  { title: 'Aile Odası', description: 'Geniş ve konforlu aile odası seçeneği.', features: ['Geniş Alan', 'Klima', 'Wi-Fi'] },
-  { title: 'Tek Kişilik Oda', description: 'Pratik ve temiz tek kişilik konaklama.', features: ['Tek Kişilik Yatak', 'Klima', 'Wi-Fi'] },
-];
-
-const services = [
-  { title: 'Ücretsiz Wi-Fi', description: 'Tüm alanlarda hızlı internet erişimi.' },
-  { title: 'Klima', description: 'Her odada ferahlatıcı klima sistemi.' },
-  { title: 'Otopark', description: 'Konuklarımız için araç park olanağı.' },
-  { title: 'Kahvaltı', description: 'Güne lezzetli bir kahvaltıyla başlayın.' },
-];
+import InfoBar from '../components/InfoBar.astro';
+import Welcome from '../components/Welcome.astro';
+import Rooms from '../components/Rooms.astro';
+import Services from '../components/Services.astro';
+import GalleryPreview from '../components/GalleryPreview.astro';
+import LocationSection from '../components/LocationSection.astro';
+import ReservationFlow from '../components/ReservationFlow.astro';
+import FinalCTA from '../components/FinalCTA.astro';
 ---
 
-<Layout>
+<Layout isHome={true}>
   <Hero />
-
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Geyikli'de Konforlu Konaklama</h2>
-      <p class="section-subtitle">Geyikli Paris, Çanakkale'de sıcak ve güvenilir bir otel deneyimi sunar.</p>
-      <div class="rooms-grid">
-        {rooms.map((room) => (
-          <RoomCard {...room} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background: var(--color-surface);">
-    <div class="container">
-      <h2 class="section-title">Hizmetlerimiz</h2>
-      <p class="section-subtitle">Konforunuz için sunduğumuz olanaklar.</p>
-      <div class="services-grid">
-        {services.map((service) => (
-          <ServiceCard {...service} />
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <CTASection />
+  <InfoBar />
+  <Welcome />
+  <Rooms />
+  <Services />
+  <GalleryPreview />
+  <LocationSection />
+  <ReservationFlow />
+  <FinalCTA />
 </Layout>
-
-<style>
-  .rooms-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-  @media (max-width: 768px) {
-    .rooms-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-</style>

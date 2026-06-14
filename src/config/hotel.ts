@@ -14,7 +14,6 @@ export const hotelConfig = {
     "Çanakkale otel",
     "Çanakkale konaklama",
     "Geyikli pansiyon",
-    "Geyikli otel",
     "Bozcaada'ya yakın konaklama",
     "Telefonla rezervasyon",
     "WhatsApp ile rezervasyon",
@@ -22,7 +21,8 @@ export const hotelConfig = {
   reservationNote:
     "Rezervasyon ve oda müsaitliği için telefon veya WhatsApp üzerinden iletişime geçebilirsiniz.",
   chatMessage:
-    "Geyikli Paris'te rezervasyon ve oda müsaitliği için telefon veya WhatsApp üzerinden iletişime geçebilirsiniz.",
+    "Rezervasyon işlemleri telefon veya WhatsApp üzerinden tamamlanır. Size en hızlı şekilde yardımcı olabilmemiz için bizimle doğrudan iletişime geçebilirsiniz.",
+  chatTitle: "Geyikli Paris Asistanı",
   pages: [
     { label: "Ana Sayfa", href: "/" },
     { label: "Odalar", href: "/odalar" },
@@ -34,3 +34,4 @@ export const hotelConfig = {
     { label: "İletişim", href: "/iletisim" },
   ],
 };
+

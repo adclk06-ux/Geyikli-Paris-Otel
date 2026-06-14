@@ -1,0 +1,96 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Bize Ulaşın',
+    text: 'Telefon veya WhatsApp üzerinden oda müsaitliği için iletişime geçin.',
+  },
+  {
+    num: '02',
+    title: 'Size Uygun Odayı Seçelim',
+    text: 'Konaklama ihtiyacınıza göre en uygun oda seçeneğini birlikte netleştirelim.',
+  },
+  {
+    num: '03',
+    title: 'Konaklamanızı Planlayın',
+    text: 'Tarih, kişi sayısı ve ihtiyaçlarınıza göre detayları telefon üzerinden tamamlayalım.',
+  },
+  {
+    num: '04',
+    title: 'Geyikli Paris\'te Sizi Ağırlayalım',
+    text: 'Geldiğinizde temiz, huzurlu ve sıcak bir konaklama deneyimi sizi bekler.',
+  },
+];
+---
+
+<section class="section reservation-flow">
+  <div class="container">
+    <div class="flow-header">
+      <span class="eyebrow">Rezervasyon</span>
+      <h2 class="section-title">Rezervasyon Süreci Nasıl İşler?</h2>
+      <p class="section-subtitle">Telefon veya WhatsApp üzerinden kolayca rezervasyon talebi oluşturabilirsiniz.</p>
+    </div>
+    <div class="flow-grid">
+      {steps.map((step) => (
+        <div class="flow-step">
+          <span class="flow-num">{step.num}</span>
+          <h3 class="flow-title">{step.title}</h3>
+          <p class="flow-text">{step.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flow-header { text-align: center; margin-bottom: 3.5rem; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+  }
+  .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .flow-step {
+    position: relative;
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .flow-step:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 164, 92, 0.2);
+  }
+  .flow-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+  }
+  .flow-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    margin-bottom: 0.6rem;
+  }
+  .flow-text {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    line-height: 1.65;
+  }
+  @media (max-width: 768px) {
+    .flow-grid { grid-template-columns: 1fr; }
+  }
+</style>

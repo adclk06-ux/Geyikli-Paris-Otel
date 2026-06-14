@@ -4,19 +4,20 @@ import { hotelConfig } from '../config/hotel';
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <h3 class="footer-brand">{hotelConfig.hotelName}</h3>
-      <p class="footer-desc">Geyikli, Çanakkale'de sıcak ve güvenilir konaklama deneyimi.</p>
+    <div class="footer-brand-col">
+      <a href="/" class="footer-brand">{hotelConfig.hotelName}</a>
+      <p class="footer-tag">Geyikli &bull; Çanakkale</p>
+      <p class="footer-desc">Geyikli, Çanakkale'de zarif ve huzurlu konaklama deneyimi.</p>
     </div>
-    <div>
-      <h4 class="footer-heading">Sayfalar</h4>
+    <div class="footer-nav-col">
+      <h4 class="footer-heading">Menü</h4>
       <ul class="footer-links">
         {hotelConfig.pages.map((page) => (
           <li><a href={page.href}>{page.label}</a></li>
         ))}
       </ul>
     </div>
-    <div>
+    <div class="footer-contact-col">
       <h4 class="footer-heading">İletişim</h4>
       <ul class="footer-links">
         <li>{hotelConfig.address}</li>
@@ -24,6 +25,11 @@ import { hotelConfig } from '../config/hotel';
         <li>WhatsApp: {hotelConfig.whatsapp}</li>
         <li>E-posta: {hotelConfig.email}</li>
       </ul>
+    </div>
+    <div class="footer-location-col">
+      <h4 class="footer-heading">Konum</h4>
+      <p class="footer-desc">{hotelConfig.address}</p>
+      <a href={hotelConfig.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="footer-map-link">Haritada Gör</a>
     </div>
   </div>
   <div class="container footer-bottom">
@@ -33,55 +39,82 @@ import { hotelConfig } from '../config/hotel';
 
 <style>
   .site-footer {
-    background: var(--color-surface);
+    background: var(--color-charcoal);
     border-top: 1px solid var(--color-border);
-    padding: 3rem 0 1.5rem;
-    margin-top: auto;
+    padding: 5rem 0 2rem;
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding-bottom: 2rem;
+    grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
     border-bottom: 1px solid var(--color-border);
   }
   .footer-brand {
-    font-size: 1.2rem;
-    color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-ivory);
+    line-height: 1;
+  }
+  .footer-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0.4rem 0 1rem;
   }
   .footer-desc {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.7;
   }
   .footer-heading {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-ivory);
+    margin-bottom: 1.25rem;
   }
   .footer-links {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.65rem;
   }
   .footer-links a,
   .footer-links li {
-    color: var(--color-text-muted);
-    font-size: 0.9rem;
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    transition: color 0.2s;
   }
   .footer-links a:hover {
-    color: var(--color-primary);
+    color: var(--color-ivory);
   }
-  .footer-bottom {
-    padding-top: 1.5rem;
-    text-align: center;
+  .footer-map-link {
+    display: inline-block;
+    margin-top: 0.75rem;
     font-size: 0.85rem;
-    color: var(--color-text-muted);
+    color: var(--color-gold);
+    transition: color 0.2s;
   }
-  @media (max-width: 640px) {
+  .footer-map-link:hover { color: var(--color-gold-soft); }
+  .footer-bottom {
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 768px) {
     .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
+    .footer-brand-col { grid-column: 1 / -1; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
   }
 </style>

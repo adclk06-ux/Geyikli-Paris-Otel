@@ -1,0 +1,88 @@
+---
+---
+
+<section class="section welcome">
+  <div class="container welcome-grid">
+    <div class="welcome-text">
+      <span class="eyebrow">Hakkımızda</span>
+      <h2 class="section-title">Geyikli'de Sakin, Şık ve Güven Veren Bir Otel Deneyimi</h2>
+      <p class="welcome-body">
+        Geyikli Paris, Çanakkale'nin huzurlu atmosferinde temiz, konforlu ve sıcak bir konaklama deneyimi sunmak için tasarlanmıştır. Misafirlerimizin kendini rahat hissettiği, kolay iletişim kurabildiği ve güvenle konaklayabildiği bir ortam hedefleriz.
+      </p>
+      <a href="/hakkimizda" class="btn btn-outline welcome-cta">Hakkımızda</a>
+    </div>
+    <div class="welcome-image">
+      <div class="image-frame">
+        <div class="image-placeholder">
+          <span>Otel Görseli</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .welcome { padding-top: 8rem; }
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .welcome-text {
+    max-width: 520px;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+  .welcome-body {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    line-height: 1.85;
+    margin: 1.5rem 0 2rem;
+  }
+  .welcome-cta { padding: 0.85rem 2rem; }
+  .welcome-image {
+    position: relative;
+  }
+  .image-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+  }
+  .image-frame::before {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid rgba(201, 164, 92, 0.2);
+    border-radius: calc(var(--radius-lg) + 12px);
+    z-index: -1;
+  }
+  .image-placeholder {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #1e2823 0%, #141a17 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @media (max-width: 768px) {
+    .welcome { padding-top: 5rem; }
+    .welcome-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .welcome-image { order: -1; }
+  }
+</style>
