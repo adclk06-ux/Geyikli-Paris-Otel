@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  { title: 'Ücretsiz Wi-Fi', description: 'Tüm alanlarda hızlı internet erişimi.' },
+  { title: 'Klima', description: 'Her odada ferahlatıcı klima sistemi.' },
+  { title: 'Otopark', description: 'Konuklarımız için araç park olanağı.' },
+  { title: 'Kahvaltı', description: 'Güne lezzetli bir kahvaltıyla başlayın.' },
+  { title: 'Günlük Temizlik', description: 'Odalar düzenli olarak temizlenir.' },
+  { title: '24 Saat Resepsiyon', description: 'Her an yardım alabileceğiniz resepsiyon.' },
+];
+---
+
+<Layout title="Hizmetler">
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Hizmetlerimiz</h1>
+      <p class="section-subtitle">Konforunuz için sunduğumuz olanaklar.</p>
+      <div class="services-grid">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .services-grid { grid-template-columns: 1fr; }
+  }
+</style>

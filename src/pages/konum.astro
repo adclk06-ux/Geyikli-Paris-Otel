@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { hotelConfig } from '../config/hotel';
+---
+
+<Layout title="Konum">
+  <section class="section">
+    <div class="container location-content">
+      <h1 class="section-title">Konum</h1>
+      <p>
+        Geyikli Paris, <strong>{hotelConfig.location}</strong> merkezinde yer almaktadır. Çanakkale'nin güzel ilçesi Geyikli'de konaklama yapmak isteyenler için ideal bir konuma sahibiz.
+      </p>
+      <p>
+        Bozcaada feribotuna yakın konumumuz sayesinde adaya geçiş yapmak isteyen misafirlerimiz için pratik bir konaklama noktasıyız.
+      </p>
+      <p>
+        Adres: {hotelConfig.address}
+      </p>
+      <div class="map-placeholder">
+        <span>Harita Alanı</span>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .location-content { max-width: 720px; }
+  .location-content p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .map-placeholder {
+    aspect-ratio: 16 / 9;
+    background: var(--color-border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+  }
+</style>

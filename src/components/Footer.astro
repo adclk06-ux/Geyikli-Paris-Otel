@@ -1,0 +1,87 @@
+---
+import { hotelConfig } from '../config/hotel';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3 class="footer-brand">{hotelConfig.hotelName}</h3>
+      <p class="footer-desc">Geyikli, Çanakkale'de sıcak ve güvenilir konaklama deneyimi.</p>
+    </div>
+    <div>
+      <h4 class="footer-heading">Sayfalar</h4>
+      <ul class="footer-links">
+        {hotelConfig.pages.map((page) => (
+          <li><a href={page.href}>{page.label}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-heading">İletişim</h4>
+      <ul class="footer-links">
+        <li>{hotelConfig.address}</li>
+        <li>Telefon: {hotelConfig.phone}</li>
+        <li>WhatsApp: {hotelConfig.whatsapp}</li>
+        <li>E-posta: {hotelConfig.email}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {new Date().getFullYear()} {hotelConfig.hotelName}. Tüm hakları saklıdır.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 0 1.5rem;
+    margin-top: auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .footer-brand {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+  .footer-desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .footer-heading {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .footer-links a,
+  .footer-links li {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .footer-links a:hover {
+    color: var(--color-primary);
+  }
+  .footer-bottom {
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

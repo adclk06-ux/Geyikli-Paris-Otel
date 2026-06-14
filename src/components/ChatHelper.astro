@@ -1,0 +1,63 @@
+---
+import { hotelConfig } from '../config/hotel';
+---
+
+<div class="chat-helper" id="chatHelper">
+  <button class="chat-toggle" id="chatToggle" aria-label="Sohbet">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/>
+      <path d="M7 9h10v2H7zm0-3h10v2H7z"/>
+    </svg>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <span class="chat-title">{hotelConfig.hotelName}</span>
+      <button class="chat-close" id="chatClose" aria-label="Kapat">&times;</button>
+    </div>
+    <div class="chat-body">
+      <p>{hotelConfig.chatMessage}</p>
+      <div class="chat-actions">
+        <a href={`tel:${hotelConfig.phone}`} class="btn btn-primary chat-btn">Ara</a>
+        <a href={`https://wa.me/${hotelConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" class="btn btn-outline chat-btn">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .chat-helper { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 200; }
+  .chat-toggle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--color-primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+  }
+  .chat-toggle:hover { transform: scale(1.08); }
+  .chat-panel {
+    position: absolute; bottom: 68px; left: 0;
+    width: 280px; background: var(--color-surface);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+    display: none; overflow: hidden;
+  }
+  .chat-panel.open { display: block; }
+  .chat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 1rem; background: var(--color-primary); color: #fff;
+  }
+  .chat-title { font-weight: 600; font-size: 0.95rem; }
+  .chat-close { color: #fff; font-size: 1.3rem; line-height: 1; }
+  .chat-body { padding: 1rem; font-size: 0.9rem; color: var(--color-text); }
+  .chat-actions {
+    display: flex; gap: 0.5rem; margin-top: 0.75rem;
+  }
+  .chat-btn { flex: 1; padding: 0.6rem; font-size: 0.85rem; }
+</style>
+
+<script>
+  const toggle = document.getElementById('chatToggle');
+  const panel = document.getElementById('chatPanel');
+  const close = document.getElementById('chatClose');
+  toggle?.addEventListener('click', () => panel?.classList.toggle('open'));
+  close?.addEventListener('click', () => panel?.classList.remove('open'));
+</script>

@@ -1,0 +1,54 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  features?: string[];
+}
+
+const { title, description, features = [] } = Astro.props;
+---
+
+<div class="room-card card">
+  <div class="room-image-placeholder">
+    <span>Oda Fotoğrafı</span>
+  </div>
+  <div class="room-body">
+    <h3 class="room-title">{title}</h3>
+    <p class="room-desc">{description}</p>
+    {features.length > 0 && (
+      <ul class="room-features">
+        {features.map((f) => <li>{f}</li>)}
+      </ul>
+    )}
+  </div>
+</div>
+
+<style>
+  .room-card { transition: transform 0.2s; }
+  .room-card:hover { transform: translateY(-4px); }
+  .room-image-placeholder {
+    aspect-ratio: 16 / 10;
+    background: var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+  .room-body { padding: 1.25rem; }
+  .room-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .room-desc { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+  .room-features {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .room-features li {
+    background: var(--color-bg);
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+</style>

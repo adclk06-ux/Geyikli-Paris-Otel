@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="service-card card">
+  <div class="service-body">
+    <h3 class="service-title">{title}</h3>
+    <p class="service-desc">{description}</p>
+  </div>
+</div>
+
+<style>
+  .service-card {
+    padding: 1.5rem;
+    transition: transform 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .service-desc { color: var(--color-text-muted); font-size: 0.9rem; }
+</style>

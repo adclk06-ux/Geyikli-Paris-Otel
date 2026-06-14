@@ -1,0 +1,50 @@
+---
+import { hotelConfig } from '../config/hotel';
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <h1 class="hero-title">Geyikli Paris'te konforlu ve huzurlu konaklama</h1>
+    <p class="hero-subtitle">Geyikli, Çanakkale'de temiz, sıcak ve güven veren bir konaklama deneyimi için bizimle iletişime geçin.</p>
+    <div class="hero-actions">
+      <a href={`tel:${hotelConfig.phone}`} class="btn btn-primary">Rezervasyon İçin Arayın</a>
+      <a href={`https://wa.me/${hotelConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp'tan Yazın</a>
+      <a href="/odalar" class="btn btn-outline">Odaları İncele</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, #F5F0E8 0%, #EDE6DA 100%);
+    padding: 5rem 0;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    line-height: 1.2;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  @media (max-width: 640px) {
+    .hero { padding: 3rem 0; }
+    .hero-title { font-size: 1.7rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    .hero-actions .btn { width: 100%; max-width: 280px; }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import { hotelConfig } from '../config/hotel';
+---
+
+<section class="cta-section">
+  <div class="container cta-inner">
+    <h2 class="cta-title">Rezervasyon için arayın</h2>
+    <p class="cta-text">Oda müsaitliği için WhatsApp'tan yazın veya telefonla rezervasyon yapın.</p>
+    <div class="cta-actions">
+      <a href={`tel:${hotelConfig.phone}`} class="btn btn-primary">Telefonla Rezervasyon</a>
+      <a href={`https://wa.me/${hotelConfig.whatsapp}`} target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp İle Rezervasyon</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+  }
+  .cta-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .cta-text {
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .cta-section .btn-primary {
+    background: #fff;
+    color: var(--color-primary);
+  }
+  .cta-section .btn-primary:hover {
+    background: var(--color-bg);
+  }
+  .cta-section .btn-outline {
+    border-color: #fff;
+    color: #fff;
+  }
+  .cta-section .btn-outline:hover {
+    background: #fff;
+    color: var(--color-primary);
+  }
+  @media (max-width: 640px) {
+    .cta-section { padding: 2.5rem 0; }
+    .cta-title { font-size: 1.4rem; }
+    .cta-actions { flex-direction: column; align-items: center; }
+    .cta-actions .btn { width: 100%; max-width: 280px; }
+  }
+</style>

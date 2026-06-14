@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RoomCard from '../components/RoomCard.astro';
+import CTASection from '../components/CTASection.astro';
+
+const rooms = [
+  { title: 'Çift Kişilik Oda', description: 'Rahat ve huzurlu bir konaklama için ideal.', features: ['Çift Kişilik Yatak', 'Klima', 'Wi-Fi'] },
+  { title: 'Aile Odası', description: 'Geniş ve konforlu aile odası seçeneği.', features: ['Geniş Alan', 'Klima', 'Wi-Fi'] },
+  { title: 'Tek Kişilik Oda', description: 'Pratik ve temiz tek kişilik konaklama.', features: ['Tek Kişilik Yatak', 'Klima', 'Wi-Fi'] },
+];
+---
+
+<Layout title="Odalar">
+  <section class="section">
+    <div class="container">
+      <h1 class="section-title">Odalarımız</h1>
+      <p class="section-subtitle">Geyikli Paris'te temiz ve konforlu odalar sizi bekliyor.</p>
+      <div class="rooms-grid">
+        {rooms.map((room) => (
+          <RoomCard {...room} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <CTASection />
+</Layout>
+
+<style>
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .rooms-grid { grid-template-columns: 1fr; }
+  }
+</style>
