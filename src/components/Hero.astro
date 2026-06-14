@@ -3,7 +3,14 @@ import { hotelConfig } from '../config/hotel';
 ---
 
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <img
+      src="/images/hotel/geyikli-paris-otel-drone-deniz-manzara.jpg"
+      alt="Geyikli Paris Otel drone ile deniz manzaralı dış cephe görünümü"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
   <div class="hero-overlay"></div>
   <div class="container hero-inner">
     <span class="hero-eyebrow">Geyikli &bull; Çanakkale</span>
@@ -42,6 +49,14 @@ import { hotelConfig } from '../config/hotel';
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg, #1a2520 0%, #0d1110 50%, #111815 100%);
+  }
+  .hero-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
   }
   .hero-bg::after {
     content: '';

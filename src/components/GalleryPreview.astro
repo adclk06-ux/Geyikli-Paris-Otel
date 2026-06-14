@@ -1,10 +1,35 @@
 ---
-const categories = [
-  { label: 'Odalar', span: 'large' },
-  { label: 'Ortak Alanlar', span: 'small' },
-  { label: 'Kahvaltı', span: 'small' },
-  { label: 'Çevre', span: 'small' },
-  { label: 'Çevre', span: 'small' },
+const galleryItems = [
+  {
+    src: '/images/hotel/geyikli-paris-otel-oda-cift-kisilik-1.jpg',
+    alt: 'Geyikli Paris Otel çift kişilik oda',
+    label: 'Odalar',
+    span: 'large',
+  },
+  {
+    src: '/images/hotel/geyikli-paris-otel-dis-cephe-2.jpg',
+    alt: 'Geyikli Paris Otel dış cephe görünümü',
+    label: 'Dış Cephe',
+    span: 'small',
+  },
+  {
+    src: '/images/hotel/geyikli-paris-otel-oda-balkon-1.jpg',
+    alt: 'Geyikli Paris Otel balkonlu oda görünümü',
+    label: 'Balkon ve Manzara',
+    span: 'small',
+  },
+  {
+    src: '/images/hotel/geyikli-paris-otel-elektrikli-arac-sarj-istasyonu-1.jpg',
+    alt: 'Geyikli Paris Otel elektrikli araç şarj istasyonu',
+    label: 'Elektrikli Şarj İstasyonu',
+    span: 'small',
+  },
+  {
+    src: '/images/hotel/geyikli-paris-otel-bahce-1.jpg',
+    alt: 'Geyikli Paris Otel bahçe alanı',
+    label: 'Bahçe',
+    span: 'small',
+  },
 ];
 ---
 
@@ -16,31 +41,19 @@ const categories = [
       <p class="section-subtitle">Konaklama deneyiminizden önce mekanımızı keşfedin.</p>
     </div>
     <div class="gallery-masonry">
-      <div class="gallery-item large">
-        <div class="gallery-placeholder">
-          <span>Odalar</span>
+      {galleryItems.map((item) => (
+        <div class={`gallery-item ${item.span}`}>
+          <img
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="gallery-item-overlay">
+            <span>{item.label}</span>
+          </div>
         </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Ortak Alanlar</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Kahvaltı</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Çevre</span>
-        </div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder">
-          <span>Çevre</span>
-        </div>
-      </div>
+      ))}
     </div>
     <div class="gallery-cta">
       <a href="/galeri" class="btn btn-outline">Tüm Galeriyi Gör</a>
@@ -74,29 +87,39 @@ const categories = [
   .gallery-item.large {
     grid-row: 1 / -1;
   }
-  .gallery-placeholder {
+  .gallery-item img {
     position: absolute;
     inset: 0;
-    background: linear-gradient(160deg, #1e2823 0%, #141a17 100%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to top, rgba(15,20,18,0.5) 0%, transparent 60%);
+    transition: background 0.4s ease;
+  }
+  .gallery-item:hover .gallery-item-overlay {
+    background: linear-gradient(to top, rgba(15,20,18,0.7) 0%, transparent 70%);
+  }
+  .gallery-item-overlay span {
+    position: relative;
+    z-index: 2;
     color: var(--color-muted);
     font-size: 0.85rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    transition: transform 0.6s ease;
-  }
-  .gallery-item:hover .gallery-placeholder { transform: scale(1.04); }
-  .gallery-placeholder::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(15,20,18,0.5) 0%, transparent 60%);
-  }
-  .gallery-placeholder span {
-    position: relative;
-    z-index: 2;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(247, 239, 227, 0.2);
+    border-radius: 999px;
+    background: rgba(15, 20, 18, 0.5);
   }
   .gallery-cta {
     text-align: center;

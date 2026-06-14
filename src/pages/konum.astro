@@ -32,9 +32,12 @@ import { hotelConfig } from '../config/hotel';
       </div>
       <div class="location-map">
         <div class="map-frame">
-          <div class="map-placeholder">
-            <span>Harita Alanı</span>
-          </div>
+          <img
+            src="/images/hotel/geyikli-paris-otel-drone-deniz-manzara.jpg"
+            alt="Geyikli Paris Otel drone ile deniz manzaralı dış cephe görünümü"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
     </div>
@@ -123,16 +126,12 @@ import { hotelConfig } from '../config/hotel';
     border-radius: calc(var(--radius-lg) + 12px);
     z-index: -1;
   }
-  .map-placeholder {
+  .map-frame img {
+    display: block;
+    width: 100%;
     aspect-ratio: 4 / 3;
-    background: linear-gradient(160deg, #1e2823 0%, #141a17 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    object-fit: cover;
+    object-position: center 35%;
   }
   @media (max-width: 768px) {
     .page-title { font-size: 2.2rem; }

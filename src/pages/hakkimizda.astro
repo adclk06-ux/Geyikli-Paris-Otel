@@ -15,9 +15,12 @@ import FinalCTA from '../components/FinalCTA.astro';
     <div class="container about-grid">
       <div class="about-image">
         <div class="image-frame">
-          <div class="image-placeholder">
-            <span>Otel Görseli</span>
-          </div>
+          <img
+            src="/images/hotel/geyikli-paris-otel-dis-cephe-2.jpg"
+            alt="Geyikli Paris Otel dış cephe ve bahçe görünümü"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
       </div>
       <div class="about-text">
@@ -103,16 +106,12 @@ import FinalCTA from '../components/FinalCTA.astro';
     border-radius: calc(var(--radius-lg) + 12px);
     z-index: -1;
   }
-  .image-placeholder {
+  .image-frame img {
+    display: block;
+    width: 100%;
     aspect-ratio: 4 / 3;
-    background: linear-gradient(160deg, #1e2823 0%, #141a17 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    object-fit: cover;
+    object-position: center;
   }
   @media (max-width: 768px) {
     .page-title { font-size: 2.2rem; }

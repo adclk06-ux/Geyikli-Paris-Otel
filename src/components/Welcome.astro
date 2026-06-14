@@ -13,9 +13,12 @@
     </div>
     <div class="welcome-image">
       <div class="image-frame">
-        <div class="image-placeholder">
-          <span>Otel Görseli</span>
-        </div>
+        <img
+          src="/images/hotel/geyikli-paris-otel-dis-cephe-1.jpg"
+          alt="Geyikli Paris Otel bahçe ve dış cephe görünümü"
+          loading="lazy"
+          decoding="async"
+        />
       </div>
     </div>
   </div>
@@ -66,16 +69,12 @@
     border-radius: calc(var(--radius-lg) + 12px);
     z-index: -1;
   }
-  .image-placeholder {
+  .image-frame img {
+    display: block;
+    width: 100%;
     aspect-ratio: 4 / 3;
-    background: linear-gradient(135deg, #1e2823 0%, #141a17 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    object-fit: cover;
+    object-position: center;
   }
   @media (max-width: 768px) {
     .welcome { padding-top: 5rem; }
